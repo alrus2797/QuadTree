@@ -65,10 +65,12 @@ class Nodo
 			pm3=	std::make_pair(p2.first,p2.second-altura/2);
 			pm4=	std::make_pair(p2.first-ancho/2,p2.second);
 			centro= std::make_pair(p1.first+ancho/2,p1.second+altura/2);
+			
 			this->hijos[0] = new Nodo(p1,centro);
 			this->hijos[1] = new Nodo(pm1,pm3);
 			this->hijos[2] = new Nodo(pm2,pm4);
 			this->hijos[3] = new Nodo(centro,p2);
+			
 		}
 
 		bool tieneHijos()
@@ -83,14 +85,23 @@ class Nodo
 
 			if (this->tieneHijos())
 			{
+				std::cout<<"Tiene hijos"<<std::endl;
 				for (int i=0;i<4;i++)	
 				{
+
 					this->hijos[i]->recorrerHijos(window);
+					
 					//std::cout<<"va por: "<<i<<std::endl;
 				}
 			}
 			else
 			{
+				std::cout<<"No Tiene hijos"<<std::endl;
+
+				if (this->objetos.size()==5)
+				{
+					this->Dividir();
+				}
 				window.draw(this->rectangulo);
 				return;
 			}

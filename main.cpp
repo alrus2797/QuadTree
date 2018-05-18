@@ -55,7 +55,10 @@ int main()
         //window.draw(shape);	//Dibujar el circulo (shape)
         //window.draw(hola.rectangulo);
         for (auto i : circulos)
+        {
         	window.draw(i);
+            hola.objetos=circulos;
+        }
         //hola.Dividir();
         hola.recorrerHijos(window);
 
